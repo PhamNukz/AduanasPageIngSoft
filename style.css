@@ -1,0 +1,422 @@
+/* Variables de color para simular la paleta del gobierno de Chile */
+:root {
+    --color-primary: #003087; /* Azul oscuro */
+    --color-secondary: #dc0012; /* Rojo */
+    --color-tertiary: #ffffff; /* Blanco */
+    --color-text: #333;
+    --color-background: #f0f2f5;
+    --color-border: #ccc;
+    --color-success: #28a745;
+    --color-section-border: #003087; /* Azul para bordes de sección */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.header {
+    background-color: var(--color-primary);
+    color: var(--color-tertiary);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.header .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+.header p {
+    margin: 0;
+    font-size: 1em;
+    margin-left: 10px;
+    align-self: flex-end; /* Alinea el texto con la parte inferior del h1 */
+}
+
+.container {
+    max-width: 850px; /* Ancho ajustado para más campos */
+    margin: 30px auto;
+    padding: 25px;
+    background-color: var(--color-tertiary);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 10px;
+}
+
+.form-instruction {
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-secondary);
+    margin-bottom: 25px;
+    font-size: 1.1em;
+}
+
+.form-section {
+    border: 1px solid var(--color-section-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: #f9fbff;
+}
+
+.form-section h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px; /* Menos espacio entre campos para acomodar más */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: var(--color-primary);
+    font-size: 0.95em;
+}
+
+.form-group .optional-label {
+    font-weight: normal;
+    color: var(--color-text);
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea, /* <--- Aquí el selector de textarea */
+.form-group select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    font-size: 0.95em;
+    box-sizing: border-box;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--color-secondary);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 48, 135, 0.2);
+}
+
+.form-group input[readonly],
+.form-group textarea[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+.form-id-group input[readonly] {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.form-id-group {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: var(--color-primary);
+    font-size: 1em;
+}
+
+/* Modificaciones para Radio & Checkbox Groups */
+.radio-group, .checkbox-group {
+    display: flex;
+    align-items: flex-start; /* <--- CAMBIO CLAVE AQUÍ: Alinea el checkbox con el inicio del texto */
+    flex-wrap: wrap;
+    gap: 10px; /* Espacio entre opciones de radio/checkbox */
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    margin-right: 5px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+    margin-top: 3px; /* <--- CAMBIO CLAVE AQUÍ: Ajuste fino para alinear el checkbox con el texto */
+    flex-shrink: 0; /* Asegura que el checkbox no se encoja */
+}
+
+.radio-group label,
+.checkbox-group label {
+    font-weight: normal;
+    color: var(--color-text);
+    display: block; /* <--- CAMBIO CLAVE AQUÍ: Permite que el texto interno del label se envuelva */
+    /* align-items: center; */ /* Eliminado: Se maneja en el padre con align-items: flex-start */
+    margin-bottom: 0;
+    cursor: pointer;
+    line-height: 1.4; /* Mejora la legibilidad en múltiples líneas */
+}
+
+.small-text {
+    font-size: 0.85em;
+    color: #555;
+    background-color: #f0f8ff;
+    border-left: 3px solid var(--color-primary);
+    padding: 10px 15px;
+    margin-top: -5px; /* Acercar al checkbox SAG */
+    margin-bottom: 20px;
+}
+
+.juramento-section {
+    background-color: #fffde7; /* Fondo ligeramente amarillo para resaltar juramento */
+    border: 1px dashed var(--color-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.juramento-section h3 {
+    color: var(--color-secondary);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--color-primary);
+}
+
+.checkbox-container label {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-tertiary);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.btn-submit:hover {
+    background-color: #00256e;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: var(--color-primary);
+    color: var(--color-tertiary);
+    font-size: 0.9em;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el Modal del Reporte */
+.modal {
+    display: none; /* OCULTO POR DEFECTO - JavaScript lo mostrará */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--color-tertiary);
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%; /* Ajuste de ancho para más contenido */
+    max-width: 750px; /* Ajuste de ancho para más contenido */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    max-height: 90vh; /* Limitar altura del modal para que no se desborde */
+    overflow-y: auto; /* Scroll dentro del modal si es necesario */
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+.modal-content h3 {
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 10px;
+}
+
+.report-section {
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fefeff;
+}
+
+.report-section h4 {
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: 5px;
+}
+
+.modal-content p {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.modal-content p strong {
+    color: var(--color-primary);
+}
+
+.modal-content span {
+    font-weight: normal;
+    color: var(--color-text);
+}
+
+.modal-content .nota-mockup {
+    font-style: italic;
+    color: #666;
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.btn-download {
+    display: block;
+    width: 80%;
+    margin: 25px auto 0 auto;
+    padding: 12px 20px;
+    background-color: var(--color-success);
+    color: var(--color-tertiary);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-download:hover {
+    background-color: #218838;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .header p {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+    .form-section {
+        padding: 15px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group textarea,
+    .form-group select {
+        width: calc(100% - 18px); /* Ajuste para móviles */
+    }
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+    .btn-download {
+        width: 90%;
+    }
+    .radio-group, .checkbox-group {
+        flex-direction: column; /* Apila checkbox/label verticalmente en móviles */
+        align-items: flex-start;
+        gap: 10px; /* Mantener el gap entre el checkbox y el label apilados */
+    }
+}
+
+/* Asegurarse de que el textarea no sea redimensionable */
+textarea {
+    resize: none; /* <--- CAMBIO CLAVE AQUÍ: Bloquea completamente la redimensión */
+    min-height: 80px;
+}

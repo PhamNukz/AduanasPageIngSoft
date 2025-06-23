@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Declaración Jurada Conjunta - SAG y Aduanas (Mockup)</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23003087' d='M12 2L2 22h20L12 2zM12 6.1L18.3 19H5.7L12 6.1z'/%3E%3C/svg%3E">
+</head>
+<body>
+   
+    <header class="header">
+        <div class="header-content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Logo_Gobierno_de_Chile_2010-2014.svg" alt="Logo de Gobierno de Chile" class="logo">
+            <div class="header-titles">
+                <p class="gobierno-text">Gobierno de Chile</p>
+                <h1>Servicio Nacional de Aduanas y SAG</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Declaración Jurada Conjunta</h2>
+        
+        <p class="form-instruction">ESTA DECLARACIÓN DEBE SER LLENADA POR TODA PERSONA QUE INGRESE AL PAÍS.</p>
+
+        <form id="declaracionForm" aria-labelledby="form-title" novalidate>
+            <div class="form-group form-id-group" role="group" aria-labelledby="id-label">
+                <strong id="id-label">ID de Formulario:</strong>
+                <span id="formIdDisplay" aria-live="polite"></span>
+            </div>
+
+            <section class="form-section" aria-labelledby="identification-heading">
+                <h3 id="identification-heading">I. IDENTIFICACIÓN</h3>
+                
+                <div class="form-group">
+                    <label for="nombres">Nombres Completos:</label>
+                    <input type="text" id="nombres" name="nombres" required placeholder="Ingrese sus nombres" autocomplete="given-name">
+                    </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" required placeholder="Ingrese sus apellidos" autocomplete="family-name">
+                    </div>
+                
+                <div class="form-group" role="group" aria-labelledby="gender-label">
+                    <label id="gender-label">Género:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="generoMasculino" name="genero" value="Masculino" required>
+                        <label for="generoMasculino">Masculino</label>
+                        <input type="radio" id="generoFemenino" name="genero" value="Femenino">
+                        <label for="generoFemenino">Femenino</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nacionalidad">Nacionalidad:</label>
+                    <input type="text" id="nacionalidad" name="nacionalidad" required placeholder="Ej: Chilena" autocomplete="nationality">
+                    </div>
+                <div class="form-group">
+                    <label for="paisProcedencia">País de Procedencia:</label>
+                    <input type="text" id="paisProcedencia" name="paisProcedencia" required placeholder="Ej: Argentina" autocomplete="country">
+                    </div>
+                <div class="form-group">
+                    <label for="direccionChile">Dirección en Chile:</label>
+                    <input type="text" id="direccionChile" name="direccionChile" required placeholder="Calle, número, comuna, ciudad" autocomplete="street-address">
+                    </div>
+                <div class="form-group">
+                    <label for="tipoDocumento">Documento de Viaje - Tipo:</label>
+                    <input type="text" id="tipoDocumento" name="tipoDocumento" required placeholder="Ej: Pasaporte, Cédula de Identidad" autocomplete="on">
+                    </div>
+                <div class="form-group">
+                    <label for="numeroDocumento">Documento de Viaje - N°:</label>
+                    <input type="text" id="numeroDocumento" name="numeroDocumento" required placeholder="Número del documento" autocomplete="off">
+                    </div>
+                <div class="form-group">
+                    <label for="rut">RUT (si aplica, para residentes):</label>
+                    <input type="text" id="rut" name="rut" placeholder="Ej: 12.345.678-9 (opcional)" autocomplete="off">
+                    </div>
+                <div class="form-group">
+                    <label for="lugarIngreso">Control Fronterizo / Aeropuerto / Puerto de ingreso a Chile:</label>
+                    <input type="text" id="lugarIngreso" name="lugarIngreso" required placeholder="Ej: Aeropuerto Arturo Merino Benítez" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="medioTransporte">Medio de transporte de ingreso a Chile:</label>
+                    <select id="medioTransporte" name="medioTransporte" required autocomplete="off">
+                        <option value="">Seleccione...</option>
+                        <option value="Avión">Avión</option>
+                        <option value="Bus">Bus</option>
+                        <option value="Tren">Tren</option>
+                        <option value="Auto">Auto</option>
+                        <option value="Camión">Camión</option>
+                        <option value="Nave">Nave</option>
+                        <option value="Moto">Moto</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="form-section" aria-labelledby="aduanas-heading">
+                <h3 id="aduanas-heading">II. SERVICIO NACIONAL DE ADUANAS</h3>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="mercanciasAduana" name="mercanciasAduana" value="Si">
+                    <label for="mercanciasAduana">¿Traigo mercancías no comprendidas en el concepto de equipaje (descritas en las instrucciones)?</label>
+                </div>
+                <div class="form-group">
+                    <label for="detalleMercancias" class="optional-label">Si la respuesta es "Sí", por favor, describa las mercancías:</label>
+                    <textarea id="detalleMercancias" name="detalleMercancias" rows="3" placeholder="Ej: 1 Tablet nueva, regalos por valor de US$400, etc. (No es requerido si la casilla superior no está marcada)"></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="monedaExtranjera" name="monedaExtranjera" value="Si">
+                    <label for="monedaExtranjera">¿Traigo al país (Chile) más de US$10.000 de los Estados Unidos de América o su equivalente en otras monedas en efectivo, o instrumentos negociables al portador por montos superiores al señalado?</label>
+                </div>
+            </section>
+
+            <section class="form-section" aria-labelledby="sag-heading">
+                <h3 id="sag-heading">III. SERVICIO AGRÍCOLA Y GANADERO (SAG)</h3>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="productosSAG" name="productosSAG" value="Si" required aria-describedby="sag-info">
+                    <label for="productosSAG">DECLARO TRAER CONMIGO UNO O MÁS PRODUCTOS DE ORIGEN VEGETAL O ANIMAL.</label>
+                </div>
+                <p class="small-text" id="sag-info">
+                    El declarar "SÍ", no necesariamente implica autorización para ingresar los productos que usted porta, ya que deben cumplir con las regulaciones legales vigentes.
+                    NO SE EXPONGA A MULTAS, SI TIENE DUDAS, DECLARE O CONSULTE AL PERSONAL DEL SAG.
+                </p>
+                <div class="form-group">
+                    <label for="detalleSAG" class="optional-label">Si la respuesta es "Sí", por favor, describa los productos de origen vegetal o animal:</label>
+                    <textarea id="detalleSAG" name="detalleSAG" rows="5" placeholder="Ej: 2 manzanas, un poco de miel, queso. (Requerido si la casilla superior está marcada)"></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="incluyeMenores" name="incluyeMenores" value="Si" aria-describedby="menores-info">
+                    <label for="incluyeMenores">ESTA DECLARACIÓN INCLUYE EL EQUIPAJE DE MENORES DE 18 AÑOS.</label>
+                </div>
+                <div class="form-group" id="menores-info">
+                    <label for="numHombresMenores" class="optional-label">Si la respuesta es "Sí", indique N° de hombres:</label>
+                    <input type="number" id="numHombresMenores" name="numHombresMenores" min="0" value="" placeholder="#">
+                </div>
+                <div class="form-group">
+                    <label for="numMujeresMenores" class="optional-label">Si la respuesta es "Sí", indique N° de mujeres:</label>
+                    <input type="number" id="numMujeresMenores" name="numMujeresMenores" min="0" value="" placeholder="#">
+                </div>
+            </section>
+
+            <div class="form-group juramento-section" role="group" aria-labelledby="juramento-heading">
+                <h3 id="juramento-heading">DECLARACIÓN BAJO JURAMENTO</h3>
+                <p id="juramentoCompleto" name="juramentoCompleto" readonly>
+                    HE LEÍDO LAS INSTRUCCIONES QUE APARECEN EN EL REVERSO DEL FORMULARIO (simuladas en este mockup) Y DECLARO BAJO JURAMENTO QUE:
+                    Toda la información proporcionada en este formulario es verídica y completa, y que no omito ni oculto información relevante para el proceso aduanero y SAG. Me comprometo a cumplir con todas las normativas y leyes chilenas vigentes.
+                </p>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="aceptarJuramento" name="aceptarJuramento" required>
+                    <label for="aceptarJuramento">Acepto la declaración bajo juramento</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Generar Reporte y Enviar (Mockup)</button>
+        </form>
+
+        <div id="reporteModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal-content">
+                <span class="close-button" role="button" aria-label="Cerrar ventana emergente" tabindex="0">&times;</span>
+                <h3 id="modal-title">Reporte de Declaración Jurada</h3>
+                
+                <div class="report-section">
+                    <h4>I. IDENTIFICACIÓN</h4>
+                    <p><strong>Nombres Completos:</strong> <span id="reportNombres">#</span></p>
+                    <p><strong>Apellidos:</strong> <span id="reportApellidos">#</span></p>
+                    <p><strong>Género:</strong> <span id="reportGenero">#</span></p>
+                    <p><strong>Nacionalidad:</strong> <span id="reportNacionalidad">#</span></p>
+                    <p><strong>País de Procedencia:</strong> <span id="reportPaisProcedencia">#</span></p>
+                    <p><strong>Dirección en Chile:</strong> <span id="reportDireccionChile">#</span></p>
+                    <p><strong>Documento de Viaje:</strong> <span id="reportTipoDocumento">#</span> N° <span id="reportNumeroDocumento">#</span></p>
+                    <p><strong>RUT:</strong> <span id="reportRut">#</span></p>
+                    <p><strong>Lugar de Ingreso:</strong> <span id="reportLugarIngreso">#</span></p>
+                    <p><strong>Medio de Transporte:</strong> <span id="reportMedioTransporte">#</span></p>
+                    <p><strong>ID de Formulario:</strong> <span id="reportFormId">#</span></p>
+                </div>
+
+                <div class="report-section">
+                    <h4>II. SERVICIO NACIONAL DE ADUANAS</h4>
+                    <p><strong>Mercancías no equipaje:</strong> <span id="reportMercanciasAduana">#</span></p>
+                    <p><strong>Detalle Mercancías:</strong> <span id="reportDetalleMercancias">#</span></p>
+                    <p><strong>Moneda &gt; US$10.000:</strong> <span id="reportMonedaExtranjera">#</span></p>
+                </div>
+
+                <div class="report-section">
+                    <h4>III. SERVICIO AGRÍCOLA Y GANADERO (SAG)</h4>
+                    <p><strong>Productos Vegetales/Animales:</strong> <span id="reportProductosSAG">#</span></p>
+                    <p><strong>Detalle Productos SAG:</strong> <span id="reportDetalleSAG">#</span></p>
+                    <p><strong>Incluye equipaje de menores:</strong> <span id="reportIncluyeMenores">#</span></p>
+                    <p><strong>N° Hombres (menores):</strong> <span id="reportNumHombresMenores">#</span></p>
+                    <p><strong>N° Mujeres (menores):</strong> <span id="reportNumMujeresMenores">#</span></p>
+                </div>
+
+                <p class="nota-mockup">Este es un reporte simulado. En una implementación real, se generaría un PDF.</p>
+                <button id="downloadPdfBtn" class="btn-download" type="button">Descargar PDF (Simulado)</button>
+                </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Gobierno de Chile. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
