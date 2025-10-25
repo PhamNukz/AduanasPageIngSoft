@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Churros - Login</title>
+
+  <!-- TailwindCSS + DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body class="bg-base-200">
+
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+      <!-- Logo/Título -->
+      <div class="text-center mb-6">
+        <h1 class="text-4xl font-bold text-primary mb-2">🍩 POS Churros</h1>
+        <p class="text-base-content/70">Sistema de Punto de Venta</p>
+      </div>
+
+      <!-- Formulario de Login -->
+      <form id="loginForm">
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text">Usuario</span>
+          </label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Ingrese su usuario"
+            class="input input-bordered w-full"
+            required
+            autocomplete="username"
+          />
+        </div>
+
+        <div class="form-control mb-6">
+          <label class="label">
+            <span class="label-text">Contraseña</span>
+          </label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Ingrese su contraseña"
+            class="input input-bordered w-full"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+
+        <!-- Mensaje de error -->
+        <div id="errorMessage" class="alert alert-error hidden mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span id="errorText">Usuario o contraseña incorrectos</span>
+        </div>
+
+        <div class="form-control">
+          <button type="submit" class="btn btn-primary btn-block">
+            Iniciar Sesión
+          </button>
+        </div>
+      </form>
+
+      <!-- Información de usuarios -->
+      <div class="divider">Usuarios de prueba</div>
+      <div class="text-sm text-base-content/60 space-y-1">
+        <p>👤 admin / 1234</p>
+        <p>👤 caja / 1234</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/db.js"></script>
+  <script>
+    // Inicializar la base de datos
+    let dbReady = false;
+
+    db.init()
+      .then(() => {
+        dbReady = true;
+        console.log('Base de datos inicializada correctamente');
+      })
+      .catch(error => {
+        console.error('Error al inicializar la base de datos:', error);
+        alert('Error al inicializar la base de datos. Por favor, recargue la página.');
+      });
+
+    // Manejo del formulario de login
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!dbReady) {
+        mostrarError('La base de datos aún se está inicializando. Por favor, espere...');
+        return;
+      }
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      try {
+        const usuario = await db.verificarUsuario(username, password);
+
+        if (usuario) {
+          // Guardar sesión
+          sessionStorage.setItem('usuarioActual', JSON.stringify(usuario));
+
+          // Redirigir a la aplicación principal
+          window.location.href = 'app.html';
+        } else {
+          mostrarError('Usuario o contraseña incorrectos');
+        }
+      } catch (error) {
+        console.error('Error al verificar usuario:', error);
+        mostrarError('Error al iniciar sesión. Por favor, intente nuevamente.');
+      }
+    });
+
+    function mostrarError(mensaje) {
+      const errorDiv = document.getElementById('errorMessage');
+      const errorText = document.getElementById('errorText');
+
+      errorText.textContent = mensaje;
+      errorDiv.classList.remove('hidden');
+
+      // Ocultar después de 5 segundos
+      setTimeout(() => {
+        errorDiv.classList.add('hidden');
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
